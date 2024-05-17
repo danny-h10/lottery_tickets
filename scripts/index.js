@@ -22,4 +22,30 @@ window.onload = () => {
 
 function loadWinnningTicketsTable(){
 
+    //i need to get a hold of the element with the id of winningTicketsTblBody
+    let tableBody = document.querySelector("#winningTicketsTblBody")
+
+    //need to work with all the lottery tickets
+    winningTickets.forEach ( (ticket) => {
+
+        //call a function to build the individual table and data
+        buildTableRow(tableBody, ticket);
+    })
+
+    //this function is responsible for building and adding a table row to the table body
+    function buildTableRow(tableBody, data){
+
+        //create new row and put it at the end of the table
+        let newRow = tableBody.insertRow();
+
+        let cell1 = newRow.insertCell();
+        cell1.innerHTML = data.tixNum;
+
+        let cell2 = newRow.insertCell();
+        cell2.innerHTML = `${data.prize.toFixed(2)}`
+
+        let cell3 = newRow.insertCell();
+        cell3.innerHTML =  data.expires
+
+    }
 }
